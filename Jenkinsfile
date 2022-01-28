@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        NEXUS_USER         = credentials('nexus-user')
-        NEXUS_PASSWORD     = credentials('nexus-password')
+        NEXUS_USER         = credentials('useradminnexus')
+        NEXUS_PASSWORD     = credentials('userpasswordnexus')
     }
     stages {
         stage("Pipeline"){
