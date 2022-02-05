@@ -28,7 +28,7 @@ pipeline {
                     }
                     stage("Paso 3: Curl Springboot Gradle sleep 20"){
                         sh "gradle bootRun&"
-                        sh "sleep 20 && curl -X GET 'http://localhost:8081/rest/mscovid/test?msg=testing'"
+                        sh "sleep 20 && curl -X GET 'http://localhost:8080/rest/mscovid/test?msg=testing'"
                     }
                     stage("Paso 4: Subir Nexus"){
                         nexusPublisher nexusInstanceId: 'nexus',
@@ -57,7 +57,7 @@ pipeline {
                         sh 'nohup bash java -jar DevOpsUsach2020-0.0.1.jar & >/dev/null'
                     }
                     stage("Paso 7: Testear Artefacto - Dormir(Esperar 20sg) "){
-                       sh "sleep 20 && curl -X GET 'http://localhost:8081/rest/mscovid/test?msg=testing'"
+                       sh "sleep 20 && curl -X GET 'http://localhost:8080/rest/mscovid/test?msg=testing'"
                     }
                 }
             }
