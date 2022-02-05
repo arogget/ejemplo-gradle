@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        NEXUS_USER         = credentials('user-nexus')
-        NEXUS_PASSWORD     = credentials('password-nexus')
+        NEXUS_USER         = credentials('useradminnexus')
+        NEXUS_PASSWORD     = credentials('userpasswordnexus')
     }
     parameters {
         choice(
@@ -19,7 +19,7 @@ pipeline {
                     {
                         case 'Maven':
                             def ejecucion = load 'maven.groovy'
-                            ejecucion.call()
+                            ejecucion.call() 
                         break;
                         case 'Gradle':
                             def ejecucion = load 'gradle.groovy'
