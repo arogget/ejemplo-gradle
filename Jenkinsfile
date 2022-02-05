@@ -2,12 +2,12 @@
 //     agent any
 //     environment {
 //         NEXUS_USER         = credentials('useradminnexus')
-//         NEXUS_PASSWORD     = credentials('userpasswordnexus')
+//         NEXUS_PASSWORD     = credentials('userpasswordnexus')s
 pipeline {
     agent any
     environment {
-        NEXUS_USER         = credentials('NEXUS-USER')
-        NEXUS_PASSWORD     = credentials('NEXUS-PASS')
+        NEXUS_USER         = credentials('useradminnexus')
+        NEXUS_PASSWORD     = credentials('userpasswordnexus')
     }
     stages {
         stage("Pipeline"){
@@ -51,7 +51,7 @@ pipeline {
                         ]
                     }
                     stage("Paso 5: Descargar Nexus"){
-                        sh ' curl -X GET -u $NEXUS_USER:$NEXUS_PASSWORD "http://nexus1:8081/repository/devops-usach-nexus/com/devopsusach2020/DevOpsUsach2020/0.0.1/DevOpsUsach2020-0.0.1.jar" -O'
+                        sh ' curl -X GET -u $NEXUS_USER:$NEXUS_PASSWORD "http://nexus:8081/repository/devops-usach-nexus/com/devopsusach2020/DevOpsUsach2020/0.0.1/DevOpsUsach2020-0.0.1.jar" -O'
                     }
                     stage("Paso 6: Levantar Artefacto Jar"){
                         sh 'nohup bash java -jar DevOpsUsach2020-0.0.1.jar & >/dev/null'
